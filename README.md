@@ -64,9 +64,27 @@ make
 ## How to Use
 
 
+Convert time series to multiple SAX representations:
+
 ```
-./sax_seql -t data/Coffee_TRAIN -T data/Coffee_TEST -d [directory for output] -n 60 -w 16 -a 4
+./sax_convert -i Coffee_TRAIN -o sax.train
+./sax_convert -i Coffee_TEST -o sax.test
 ```
+Convert time series to multiple SFA representations:
+
+```
+SFA command
+```
+
+Classify with Ensemble SEQL:
+
+```
+```
+
+SEQL can also be used for feature selections. The command above also writes to file a list of features selected by SEQL. Following example use sklearn Logistic Regression for classification with the output features:
+
+```
+``` 
 
 ## References
 
@@ -85,7 +103,7 @@ Read more about SAX and other time series techniques [here](http://www.cs.ucr.ed
 
 [SFA implementation](https://github.com/patrickzib/SFA).
 
-[The UEA & UCR Time Series Classification Repository] (http://timeseriesclassification.com). Datasets and implementations of most state-of-the-art time series classifiers can be found here.
+[The UEA & UCR Time Series Classification Repository](http://timeseriesclassification.com). Datasets and implementations of most state-of-the-art time series classifiers can be found here.
 
 
 
