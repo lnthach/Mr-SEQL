@@ -36,7 +36,7 @@ The original SEQL software and its description can be found here: https://github
 This is our first attempt in time series classification with SEQL. SEQL learn a linear classification model from the symbolic representation of time series (either SAX or SFA).
 
 <p align="center">
-<img src="figs/sgseql.jpg" width="400" height="200" />
+<img src="figs/sgseql.jpg" width="800" height="200" />
 </p>
 
 ## Multiple Representations
@@ -44,7 +44,7 @@ This is our first attempt in time series classification with SEQL. SEQL learn a 
 SEQL can be combined with symbolic representations of multiple resolutions and multiple domains.
 
 <p align="center">
-<img src="figs/mrseql.jpg" width="400" height="200" />
+<img src="figs/mrseql.jpg" width="500" height="250" />
 </p>
 
 ## Installation
@@ -74,8 +74,11 @@ Our paper:
 [Time Series Classification by Sequence Learning in All-Subsequence Space] (https://ieeexplore.ieee.org/document/7930038/)
 
 Other SEQL-based projects:
+
 https://github.com/heerme/seql-sequence-learner
+
 https://github.com/lnthach/SAX-SEQL
+
 https://github.com/svgsponer/SqLoss
 
 Read more about SAX and other time series techniques [here](http://www.cs.ucr.edu/~eamonn/). The site also hosts the popular UCR Time Series Classification Archive.
