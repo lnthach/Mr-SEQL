@@ -12,7 +12,7 @@ Mr-SEQL is a time series classification software which utilizes multiple symboli
 <img src="figs/sax_demo.png" width="400" height="200" />
 </p>
 
-SAX is a transformation method to convert numeric vector to a symbolic representation, i.e. a sequence of symbols from a predefined alphabet *a*. SAX first computes the Piecewise Aggregate Approximation (PAA) of a time series and then transforms this approximation to a symbolic representation. 
+SAX is a transformation method to convert numeric vector to a symbolic representation, i.e. a sequence of symbols from a predefined alphabet *a*. SAX first computes the Piecewise Aggregate Approximation (PAA) of a time series and then transforms this approximation to a symbolic representation.
 
 PAA reduces a time series of length L to a vector of length *l* (*l* < *L* is also the length of the symbolic sequence) by dividing the time series into equal segments. Each segment is then replaced with its mean value.
 
@@ -76,15 +76,17 @@ Convert time series to multiple SFA representations:
 SFA command
 ```
 
-Classify with Ensemble SEQL:
+Classify with Ensemble SEQL (workdir will store the output of the program):
 
 ```
+./mr_seql -t sax.train -T sax.test -o workdir
 ```
 
-SEQL can also be used for feature selections. The command above also writes to file a list of features selected by SEQL. Following example use sklearn Logistic Regression for classification with the output features:
+SEQL can also be used for feature selections. The command above also writes to file a list of features selected by SEQL. Following example uses sklearn Logistic Regression for classification with the selected features:
 
 ```
-``` 
+python mf_logreg.py workdir
+```
 
 ## References
 
@@ -104,8 +106,3 @@ Read more about SAX and other time series techniques [here](http://www.cs.ucr.ed
 [SFA implementation](https://github.com/patrickzib/SFA).
 
 [The UEA & UCR Time Series Classification Repository](http://timeseriesclassification.com). Datasets and implementations of most state-of-the-art time series classifiers can be found here.
-
-
-
-
-
