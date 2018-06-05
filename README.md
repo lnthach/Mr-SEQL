@@ -47,6 +47,14 @@ SEQL can be combined with symbolic representations of multiple resolutions and m
 <img src="figs/mrseql.jpg" width="500" height="250" />
 </p>
 
+## Interpretation
+
+As our classifier is linear, the model itself is interpretable. Furthermore, we can visualize the SAX features selected by SEQL in the raw time series domain.
+
+<p align="center">
+<img src="figs/coffee_interpret.png" width="500" height="250" />
+</p>
+
 ## Installation
 
 To compile execute following commands in the src directory:
