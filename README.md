@@ -70,28 +70,29 @@ Convert time series to multiple SAX representations:
 ./sax_convert -i Coffee_TRAIN -o sax.train
 ./sax_convert -i Coffee_TEST -o sax.test
 ```
-Convert time series to multiple SFA representations:
+
+Classify with Ensemble SEQL (./saxdir/ will store the output of the program):
 
 ```
-SFA command
-```
-
-Classify with Ensemble SEQL (workdir will store the output of the program):
-
-```
-./mr_seql -t sax.train -T sax.test -o workdir
+./mr_seql -t sax.train -T sax.test -o saxdir
 ```
 
 SEQL can also be used for feature selections. The command above also writes to file a list of features selected by SEQL. Following example uses sklearn Logistic Regression for classification with the selected features:
 
 ```
-python mf_logreg.py workdir
+python mf_logreg.py saxdir
+```
+The steps to use SFA representation are similar. We provide in the src folder the python script that can work with the [Python port of SFA](https://github.com/sharford5/SFA_Python). To combine SFA features and SAX features for classification, simply add both directories to the above command.
+
+```
+python mf_logreg.py saxdir sfadir
 ```
 
 ## References
 
 Our paper:
-[Time Series Classification by Sequence Learning in All-Subsequence Space] (https://ieeexplore.ieee.org/document/7930038/)
+
+[Time Series Classification by Sequence Learning in All-Subsequence Space](https://ieeexplore.ieee.org/document/7930038/)
 
 Other SEQL-based projects:
 
@@ -103,6 +104,10 @@ https://github.com/svgsponer/SqLoss
 
 Read more about SAX and other time series techniques [here](http://www.cs.ucr.edu/~eamonn/). The site also hosts the popular UCR Time Series Classification Archive.
 
-[SFA implementation](https://github.com/patrickzib/SFA).
+[SFA implementation by the author](https://github.com/patrickzib/SFA).
 
 [The UEA & UCR Time Series Classification Repository](http://timeseriesclassification.com). Datasets and implementations of most state-of-the-art time series classifiers can be found here.
+
+## Acknowledgements
+
+This work was funded by Science Foundation Ireland (SFI).
