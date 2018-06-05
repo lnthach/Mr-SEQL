@@ -9,7 +9,7 @@ Mr-SEQL is a time series classification software which utilizes multiple symboli
 ## SAX
 
 <p align="center">
-<img src="figs/sax_demo.png" width="400" height="200" />
+<img src="figs/sax_demo.png" width="700" height="350" />
 </p>
 
 SAX is a transformation method to convert numeric vector to a symbolic representation, i.e. a sequence of symbols from a predefined alphabet *a*. SAX first computes the Piecewise Aggregate Approximation (PAA) of a time series and then transforms this approximation to a symbolic representation.
@@ -36,7 +36,7 @@ The original SEQL software and its description can be found here: https://github
 This is our first attempt in time series classification with SEQL. SEQL learn a linear classification model from the symbolic representation of time series (either SAX or SFA).
 
 <p align="center">
-<img src="figs/sgseql.jpg" width="800" height="200" />
+<img src="figs/sgseql.jpg" width="800" height="180" />
 </p>
 
 ## Multiple Representations
@@ -44,7 +44,7 @@ This is our first attempt in time series classification with SEQL. SEQL learn a 
 SEQL can be combined with symbolic representations of multiple resolutions and multiple domains.
 
 <p align="center">
-<img src="figs/mrseql.jpg" width="500" height="250" />
+<img src="figs/mrseql.jpg" width="700" height="350" />
 </p>
 
 ## Interpretation
@@ -52,7 +52,7 @@ SEQL can be combined with symbolic representations of multiple resolutions and m
 As our classifier is linear, the model itself is interpretable. Furthermore, we can visualize the SAX features selected by SEQL in the raw time series domain.
 
 <p align="center">
-<img src="figs/coffee_interpret.png" width="500" height="250" />
+<img src="figs/coffee_interpret.png" width="700" height="350" />
 </p>
 
 ## Installation
