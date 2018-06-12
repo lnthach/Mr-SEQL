@@ -9,7 +9,7 @@ Mr-SEQL is a time series classification software which utilizes multiple symboli
 ## SAX
 
 <p align="center">
-<img src="figs/sax_demo.png" width="700" height="350" />
+<img src="figs/sax_demo.png" width="680" height="350" />
 </p>
 
 SAX is a transformation method to convert numeric vector to a symbolic representation, i.e. a sequence of symbols from a predefined alphabet *a*. SAX first computes the Piecewise Aggregate Approximation (PAA) of a time series and then transforms this approximation to a symbolic representation.
@@ -90,7 +90,7 @@ SEQL can also be used for feature selections. The command above also writes to f
 ```
 python mf_logreg.py saxdir
 ```
-The steps to use SFA representation are similar. We provide in the src folder the python script that can work with the [Python port of SFA](https://github.com/sharford5/SFA_Python). To combine SFA features and SAX features for classification, simply add both directories to the above command.
+The steps to use SFA representation are similar. We provide in the src folder the python script that can work with the [Python port of SFA](https://github.com/sharford5/SFA_Python). To combine SFA features and SAX features for classification, simply add both directories to the above command:
 
 ```
 python mf_logreg.py saxdir sfadir
