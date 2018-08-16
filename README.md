@@ -102,6 +102,8 @@ Our paper:
 
 [Time Series Classification by Sequence Learning in All-Subsequence Space](https://ieeexplore.ieee.org/document/7930038/)
 
+[Interpretable Time Series Classification using All-Subsequence Learning and Symbolic Representations in Time and Frequency Domains](https://arxiv.org/abs/1808.04022)
+
 Other SEQL-based projects:
 
 https://github.com/heerme/seql-sequence-learner
