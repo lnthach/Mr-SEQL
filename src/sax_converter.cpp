@@ -14,7 +14,22 @@
 
 using namespace std;
 
+vector<double> string_to_numeric_vector(string str,string delimiter){
+	vector<double> numeric_ts;
+	size_t pos = 0;
+	std::string token;
 
+	while ((pos = str.find(delimiter)) != std::string::npos) {
+		token = str.substr(0, pos);
+		//std::cout << token << " ";
+		numeric_ts.push_back(atof(token.c_str()));
+		str.erase(0, pos + delimiter.length());
+	}
+	if (!str.empty()){
+		numeric_ts.push_back(atof(str.c_str()));
+	}
+	return numeric_ts;
+}
 
 bool convert_timeseries_to_multi_sax(string input_data,string output_sax,int min_ws, int max_ws, int wl, int as ){
 
@@ -57,8 +72,17 @@ bool convert_timeseries_to_multi_sax(string input_data,string output_sax,int min
 	for (int ws = min_ws; ws < max_ws; ws += sqrt(max_ws)){
 		cout << config << " " <<  ws << " " <<  wl << " " <<  as << endl;
 		SAX sax_converter(ws,wl,as,2);
+
 		for (int i = 0; i < y.size(); i++){
-			outfile << config << " " << y[i] << " " << sax_converter.timeseries2SAX(ts[i],del) << endl;
+			outfile << config << " " << y[i];
+			vector<double> nmts = string_to_numeric_vector(ts[i],del);
+			if (ws < nmts.size()){
+				for (string w: sax_converter.timeseries2SAX(nmts)){
+					outfile << " " << w;
+				}
+			}
+			outfile << endl;
+//			outfile << config << " " << y[i] << " " << sax_converter.timeseries2SAX(ts[i],del) << endl;
 		}
 		config++;
 	}
@@ -67,22 +91,7 @@ bool convert_timeseries_to_multi_sax(string input_data,string output_sax,int min
 	return true;
 }
 
-vector<double> string_to_numeric_vector(string str,string delimiter){
-	vector<double> numeric_ts;
-	size_t pos = 0;
-	std::string token;
 
-	while ((pos = str.find(delimiter)) != std::string::npos) {
-		token = str.substr(0, pos);
-		//std::cout << token << " ";
-		numeric_ts.push_back(atof(token.c_str()));
-		str.erase(0, pos + delimiter.length());
-	}
-	if (!str.empty()){
-		numeric_ts.push_back(atof(str.c_str()));
-	}
-	return numeric_ts;
-}
 
 bool convert_timeseries_to_multi_sax(string input_data,string output_sax, int wl, int as ){
 
@@ -134,8 +143,8 @@ bool convert_timeseries_to_multi_sax(string input_data,string output_sax, int wl
 	//cout << "Min length of data:" << min_length << endl;
 	//convert to sax
 	int config = 0;
-	for (int ws = 16; ws < min_length; ws += sqrt(min_length)/3.0){
-		//cout << config << " " <<  ws << " " <<  wl << " " <<  as << endl;
+	for (int ws = 16; ws < min_length; ws += sqrt(min_length)){
+		cout << config << " " <<  ws << " " <<  wl << " " <<  as << endl;
 		//int ws = int(0.2*min_length);
 		SAX sax_converter(ws,wl,as,2);
 		for (int i = 0; i < y.size(); i++){
@@ -151,10 +160,6 @@ bool convert_timeseries_to_multi_sax(string input_data,string output_sax, int wl
 	outfile.close();
 
 	return true;
-}
-
-bool convert_both_train_and_test_to_multi_sax(string input_data,string output_sax, int wl, int as ){
-
 }
 
 bool find_patterns(string ts_file,string pt_file,string output){

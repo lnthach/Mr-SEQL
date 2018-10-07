@@ -1249,6 +1249,140 @@ public:
 		//return accu_score;
 	}
 
+	void detect_multiple_patterns(std::vector<double> timeseries,std::vector<std::string> patterns, std::vector<double> pt_scores, std::vector<double> &accu_score){
+
+		//accu_score.resize(timeseries.size());
+		//std::fill(accu_score.begin(), accu_score.end(), 0.0);
+
+		double break_points[4] = { -0.674489750196, 0.0, 0.674489750196 };
+
+
+		char alphabet[26] = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};;
+		// length of the time series
+		int ts_length = timeseries.size();
+		std::vector<std::string>  sax_seqc;
+
+
+		std::vector<std::set<int>> marked; // store positions in time series corresponded to the pattern
+		for (int i = 0; i < patterns.size();i++){
+			marked.push_back(std::set<int>());
+		}
+
+
+		for (int cur_pos = 0; cur_pos < ts_length - window_size + 1; cur_pos += step_size){
+			//std::cout << ts_length << std::endl;
+			int window_end = cur_pos + window_size - 1;
+
+			// calculate mean and std
+			double mean_wd = 0.0;
+			double var_wd = 0.0;
+			double sum_wd = 0.0;
+			double sumsq_wd = 0.0;
+			for (int i = cur_pos; i <= window_end; i++){
+				sum_wd += timeseries[i];
+				sumsq_wd += timeseries[i]*timeseries[i];
+			}
+
+
+			mean_wd = sum_wd / window_size;
+			var_wd = sumsq_wd / window_size - mean_wd*mean_wd;
+			//std_wd = sqrt(var_wd / window_size - mean_wd*mean_wd);
+
+			// z-normalize
+			// padding data for the indivisible-length time series
+			double subsection[window_size*word_length];
+			for (int i = cur_pos; i <= window_end; i++){
+				double normalized_value;
+				if (TEST_NORMALIZE){
+					normalized_value = (timeseries[i] - mean_wd);
+					if (var_wd > 0 && !isNearlyEqualToZero(var_wd)){
+						normalized_value = normalized_value / sqrt(var_wd);
+					}
+				} else {
+					normalized_value = timeseries[i];
+				}
+				//	std::cout << normalized_value << std::endl;
+				//				}
+
+				for (int j = (i - cur_pos)*word_length;j < (i - cur_pos)*word_length + word_length; j++){
+					subsection[j] = normalized_value;
+				}
+			}
+
+			// to characters
+			std::string sax_word = "";
+			for (int i = 0; i < word_length; i++){
+				double PAA = 0.0;
+				int bin = 0;
+				for (int j = window_size*i; j < window_size*(i + 1); j++){
+					PAA += subsection[j];
+				}
+				PAA = PAA / window_size;
+				for (int j = 0; j < alphabet_size - 1;j++){
+					if (PAA >= break_points[j]){
+						bin++;
+					}
+				}
+				sax_word += alphabet[bin];
+			}
+
+			//sax_seqc += "";
+			// NOTE: should be replaced with more efficient string matching algorithm
+
+			for(int p = 0; p < patterns.size();p++){
+
+				std::string pattern = patterns[p];
+				double pt_score = pt_scores[p];
+				size_t pos = 0;
+				//std::cout << sax_word << ":" << cur_pos << std::endl;
+				while(pos < word_length){
+					pos = sax_word.find(pattern,pos);
+
+					if (pos == std::string::npos){
+						break;
+					} else {
+						//std::cout << "found:" << pattern << " at " << pos << std::endl;
+						double stt = cur_pos + pos*window_size*1.0/word_length; // starting pst of the subsequence in the time series
+						double end = stt + pattern.size()*window_size*1.0/word_length - 1; // end pst of the subsequence in the time series
+						int ceil_stt = std::ceil(stt);
+						int fl_end = std::floor(end);
+						//std::cout << sax_word.size() << ":" << pattern.size() << std::endl;
+						//std::cout << ceil_stt << ":" << fl_end << std::endl;
+						//if (fl_end >= accu_score.size()){
+						//	std::cout<< stt << " " << end << " ";
+						//	std::cout << ceil_stt << " " << fl_end << " ";
+						//}
+						for (int j = ceil_stt; j <= fl_end;j++){
+							marked[p].insert(j);
+							//accu_score[j] += pt_score; // add score for the subsequence of time series
+							//if (accu_score[j] > 1000)
+							//		std::cout << accu_score[j] << " ";
+						}
+						if (ceil_stt > 0){
+							marked[p].insert(ceil_stt - 1);
+							//accu_score[ceil_stt - 1] += (ceil_stt - stt)*pt_score; // add score to the leftmost of the subsequence
+						}
+						if(fl_end < timeseries.size() - 1){
+							marked[p].insert(fl_end + 1);
+							//accu_score[fl_end + 1] += (end - fl_end)*pt_score; // add score to the rightmost of the subsequence
+						}
+						pos++;
+					}
+				}
+
+			}
+
+		}
+
+		//return accu_score;
+		for (int i= 0; i < marked.size(); i++){
+			for (int pos : marked[i]){
+				accu_score[pos] += pt_scores[i] / marked[i].size();
+			}
+		}
+
+	}
+
 	void printBreakPoints(){
 		for (int i = 0; i < alphabet_size - 1; i++){
 			std::cout << break_points[i] << std::endl;
@@ -1260,3 +1394,4 @@ public:
 
 
 #endif /* SAX_CONVERTER_H_ */
+

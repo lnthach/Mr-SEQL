@@ -17,6 +17,9 @@ void read_multi_data(string path, vector<vector<string>> &sequences,vector<doubl
 
 	std::string str;
 	int last_config = -1;
+
+	//bool print = true;
+
 	while (std::getline(in, str)) {
 		// extract index
 		int first_space = str.find_first_of(" ");
@@ -24,17 +27,32 @@ void read_multi_data(string path, vector<vector<string>> &sequences,vector<doubl
 		str = str.substr(first_space+1);
 		// extract class
 		int second_space = str.find_first_of(" ");
-		double label = stof(str.substr(0,second_space));
-		// only populate labels vector once as it repeats
-		if (cr_config == 0){
-			labels.push_back(label);
+		double label;
+		if (second_space == string::npos){ // empty string
+			label = stof(str);
+			str = "";
+		} else {
+			label = stof(str.substr(0,second_space));
+			// only populate labels vector once as it repeats
+			str = str.substr(second_space+1);
 		}
 		//std::cout << cr_config << ":" << label << std::endl;
 		// sequence
-		str = str.substr(second_space+1);
+
+		if (cr_config == 0){
+			labels.push_back(label);
+		}
+
 		if (cr_config != last_config){
 			sequences.push_back(vector<string>());
 		}
+		//if (print){
+		//cout << str << endl;
+		//print = false;
+		//}
+		//if (str.length() <= 2){
+		//	cout << "Warning:|" << str << "|:Warning" << endl;
+		//}
 		sequences[cr_config].push_back(str);
 
 		last_config = cr_config;
@@ -230,7 +248,7 @@ void multiclass_ensemble(vector<vector<string>> &train_sequences, vector<double>
 			<< max_classify_time << ","
 			<< total_vectorspace_time
 			<< endl;
-	cout << "(Ensemble) SEQL Error: " << 1.0 - correct*1.0/test_labels.size() << endl;
+	cout << "(Ensemble) SEQL Accuracy: " << correct*1.0/test_labels.size() << endl;
 	//return 1.0 - correct*1.0/test_labels.size();
 
 }
@@ -319,17 +337,26 @@ void bin_ensemble(vector<vector<string>> &train_sequences, vector<double> &train
 	}
 
 	int correct = 0;
+	int tp = 0,fp = 0,tn = 0,fn = 0;
+
 	for (int i = 0; i < test_labels.size();i++){
 		if (total_scores[i] > 0){
 			if (test_labels[i] > 0){
 				correct++;
+				tp++;
+			} else {
+				fp++;
 			}
 		} else {
 			if (test_labels[i] < 0){
 				correct++;
+				tn++;
+			} else {
+				fn++;
 			}
 		}
 	}
+
 
 
 
@@ -340,7 +367,9 @@ void bin_ensemble(vector<vector<string>> &train_sequences, vector<double> &train
 			<< max_classify_time << ","
 			<< total_vectorspace_time
 			<< endl;
-	cout << "(Ensemble) SEQL Error: " << 1.0 - 1.0*correct/test_labels.size() << endl;
+
+	cout << "(Ensemble) SEQL Accuracy: " << 1.0*correct/test_labels.size() << endl;
+	cout << "TP/FP/TN/FN: " << tp << "/" << fp << "/" << tn << "/" << fn << endl;
 }
 
 // to automatically call bin_ensemble or multi_ensemble depends on the number of classes in the dataset
@@ -426,5 +455,6 @@ int main(int argc, char **argv){
 	//}
 
 }
+
 
 
