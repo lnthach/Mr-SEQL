@@ -71,18 +71,24 @@ make
 
 ## How to Use
 
-
-Convert time series to multiple SAX representations:
-
-```
-./sax_convert -i Coffee_TRAIN -o sax.train
-./sax_convert -i Coffee_TEST -o sax.test
-```
-
-Classify with Ensemble SEQL (./saxdir/ will store the output of the program):
+Create a working directory to store output
 
 ```
-./mr_seql -t sax.train -T sax.test -o saxdir
+mkdir saxdir
+```
+
+
+Use sax_convert to transform time series to multiple SAX representations. The program prints the SAX parameters used in the transformation.
+
+```
+./sax_convert -i Coffee_TRAIN -o saxdir/sax.train > saxdir/config
+./sax_convert -i Coffee_TEST -o saxdir/sax.test
+```
+
+Classify with Ensemble SEQL:
+
+```
+./mr_seql -t saxdir/sax.train -T saxdir/sax.test -o saxdir
 ```
 
 SEQL can also be used for feature selections. The command above also writes to file a list of features selected by SEQL. Following example uses sklearn Logistic Regression for classification with the selected features:
@@ -90,6 +96,14 @@ SEQL can also be used for feature selections. The command above also writes to f
 ```
 python mf_logreg.py saxdir
 ```
+
+Plot the 1st time series in the test data with highlight for interpretation:
+
+```
+./compute_metats -c saxdir/config -p saxdir/features -i Coffee_TEST -o saxdir/test_scores
+python visual_timeseries.py Coffee_TEST saxdir/test_scores 1
+```
+
 The steps to use SFA representation are similar. We provide in the src folder the python script that can work with the [Python port of SFA](https://github.com/sharford5/SFA_Python). To combine SFA features and SAX features for classification, simply add both directories to the above command:
 
 ```
@@ -121,3 +135,5 @@ Read more about SAX and other time series techniques [here](http://www.cs.ucr.ed
 ## Acknowledgements
 
 This work was funded by Science Foundation Ireland (SFI).
+
+Many thanks to [Martin](https://www.researchgate.net/profile/Martin_Oreilly4) for his contribution to the case study on the jump data.
