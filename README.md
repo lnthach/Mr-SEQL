@@ -77,7 +77,7 @@ cd bin
 Copy data to the working directory. Create a new directory to store output:
 
 ```
-cp ../../../../sample/Coffee/Coffee_* .
+cp ../../../../data/Coffee/Coffee_* .
 mkdir saxdir
 ```
 
@@ -148,3 +148,15 @@ Read more about SAX and other time series techniques [here](http://www.cs.ucr.ed
 This work was funded by Science Foundation Ireland (SFI).
 
 Many thanks to [Martin](https://www.researchgate.net/profile/Martin_Oreilly4) for his contribution to the case study on the jump data.
+
+Disclaimer
+----------
+These software distributions are open source, licensed under the GNU General Public License (v3 or later). 
+Note that this is the full GPL, which allows many free uses, but does not allow its incorporation 
+(even in part or in translation) into any type of proprietary software which you distribute. 
+Commercial licensing is also available; please contact us if you are interested.
+ 
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
