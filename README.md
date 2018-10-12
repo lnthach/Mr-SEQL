@@ -1,3 +1,4 @@
+
 # Time Series Classification with SEQL
 
 ## Description
@@ -57,6 +58,7 @@ As our classifier is linear, the model itself is interpretable. Furthermore, we 
 
 ## Installation
 
+Requires: cmake for compiling the C source code.
 To compile execute following commands in the src directory:
 
 ```
@@ -66,41 +68,50 @@ mkdir -p Release
 cd Release
 cmake -DCMAKE_BUILD_TYPE=Release ../../
 make
+cd bin
 ```
 
 
 ## How to Use
 
-Create a working directory to store output
+Copy data to the working directory. Create a new directory to store output:
 
 ```
+cp ../../../../sample/Coffee/Coffee_* .
 mkdir saxdir
 ```
 
-
-Use sax_convert to transform time series to multiple SAX representations. The program prints the SAX parameters used in the transformation.
+Prepare the SAX representations for Coffee_TRAIN and output results in "saxdir/sax.train". Parameter configurations are saved in "saxdir/config":
 
 ```
 ./sax_convert -i Coffee_TRAIN -o saxdir/sax.train > saxdir/config
+```
+Prepare the SAX representations for Coffee_TEST and output results in "saxdir/sax.test"
+
+```
 ./sax_convert -i Coffee_TEST -o saxdir/sax.test
 ```
 
-Classify with Ensemble SEQL:
+Classify with Ensemble SEQL. The outputs stored in saxdir also include the features and train/test data for logistic regression (or any other classifier):
 
 ```
 ./mr_seql -t saxdir/sax.train -T saxdir/sax.test -o saxdir
 ```
 
-SEQL can also be used for feature selections. The command above also writes to file a list of features selected by SEQL. Following example uses sklearn Logistic Regression for classification with the selected features:
+Following example uses sklearn Logistic Regression for classification with the selected features. In this scenario, SEQL is used for feature selection. Data transformed in feature vector space and fed to a logistic regression classifier:
 
 ```
 python mf_logreg.py saxdir
 ```
 
-Plot the 1st time series in the test data with highlight for interpretation:
+We also provide the code to plot highlighted time series. First it computes the classification score for each point in the time series:
 
 ```
 ./compute_metats -c saxdir/config -p saxdir/features -i Coffee_TEST -o saxdir/test_scores
+```
+Then plot the results with python (Python 3.x + matplotlib):
+
+```
 python visual_timeseries.py Coffee_TEST saxdir/test_scores 1
 ```
 
