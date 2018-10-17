@@ -94,7 +94,7 @@ Prepare the SAX representations for Coffee_TEST and output results in "saxdir/sa
 ./sax_convert -i Coffee_TEST -o saxdir/sax.test
 ```
 
-Classify with Ensemble SEQL. The outputs stored in saxdir also include the features selected by SEQL and the vector space representation for the train/test data. Thsi can subsequently be used for training another classifier such as logistic regression (or any other classifier):
+Classify with Ensemble SEQL. The outputs stored in saxdir also include the features selected by SEQL and the vector space representation for the train/test data. This can subsequently be used for training another classifier such as logistic regression (or any other classifier):
 
 ```
 ./mr_seql -t saxdir/sax.train -T saxdir/sax.test -o saxdir
