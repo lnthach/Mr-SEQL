@@ -1,5 +1,5 @@
 
-# Time Series Classification with SEQL
+# Time Series Classification with SEQL and multiple symbolic representations (SAX or SFA)
 
 ## Description
 
