@@ -3,7 +3,7 @@
 
 ## Description
 
-Mr-SEQL is a time series classification software which utilizes linear models and multiple symbolic representations of time series.
+Mr-SEQL is a time series classification software which utilizes linear models and multiple symbolic representations of time series to deliver an accurate and interpretable time series classifier.
 
 
 
