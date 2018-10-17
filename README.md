@@ -28,7 +28,7 @@ More information on SFA can be found here: https://github.com/patrickzib/SFA
 
 ## SEQL
 
-SEQL is a symbolic (e.g., abcd aabc ...) sequence learning algorithm that can efficiently traverse a large feature space (all variable-length subesequences in the training data are used as features) and selects the most discriminative subsequences for a linear model, based on a  training dataset.
+SEQL is a symbolic sequence learning algorithm (e.g., it can take as input sequences "abcd aabc ...") that efficiently traverses a large feature space (all variable-length subesequences in the training data are used as features) and selects the most discriminative subsequences for a linear model, based on a  training dataset.
 
 The original SEQL software and its description can be found here: https://github.com/heerme/seql-sequence-learner
 
