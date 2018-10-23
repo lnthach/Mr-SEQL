@@ -80,6 +80,7 @@ if __name__ == "__main__":
 		for ts in sys.argv[3:]:
 			plt.figure(figsize=(20,10))
 			plot_time_series_with_highlight(sys.argv[1] , sys.argv[2] ,int(ts))
-			plt.show()
+			#plt.show()
+			plt.savefig('ts_highlights.png', bbox_inches='tight')
 	else:
 		print("Need more input parameters")
