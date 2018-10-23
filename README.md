@@ -79,7 +79,7 @@ cd bin
 Copy data to the working directory. Create a new directory to store output:
 
 ```
-cp ../../../../data/Coffee/Coffee_* .
+cp ../../../data/Coffee/Coffee_* .
 mkdir saxdir
 ```
 
