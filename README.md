@@ -94,27 +94,27 @@ Prepare the SAX representations for Coffee_TEST and output results in "saxdir/sa
 ./sax_convert -i Coffee_TEST -o saxdir/sax.test
 ```
 
-Classify with Ensemble SEQL. The outputs stored in saxdir also include the features selected by SEQL and the vector space representation for the train/test data. This can subsequently be used for training another classifier such as logistic regression (or any other classifier):
+Classify with Ensemble SEQL by running the binary "mr_seql". This outputs several files in folder saxdir: "feature" includes the features selected by SEQL from each representation; "train.x and test.x" contain the vector space representation for the train and test time series and "train.y and test.y" contain the class labels. These files can subsequently be used for training another classifier such as logistic regression (or any other classifier).
 
 ```
 ./mr_seql -t saxdir/sax.train -T saxdir/sax.test -o saxdir
 ```
 
-The following example uses sklearn Logistic Regression for classification with the selected features. In this scenario, SEQL is used for feature selection. Data transformed in a feature vector space and fed to a logistic regression classifier:
+Classify with features selected by SEQL and linear models (or any other classifier). The following example uses sklearn Logistic Regression for classification with the selected features. In this scenario, SEQL is used for feature selection. Data is transformed in a feature vector space and fed to a logistic regression classifier. To run the logistic regression classifier execute:
 
 ```
-python mf_logreg.py saxdir
+python ../../../src/python/mf_logreg.py saxdir
 ```
 
-We also provide the code to plot highlighted time series. First we compute the classification score for each point in the time series, by mapping the discriminative symbolic subsequence back to the raw time series.
+Below we give the code and steps for plotting the SAX features learned with logistic regression, by mapping them back to the raw time series and highlighting the relevant parts of the time series. First we compute the classification score for each point in the time series, by mapping the discriminative SAX subsequence back to the raw time series. These computed scores for each test time series are stored in saxdir/test_scores.
 
 ```
 ./compute_metats -c saxdir/config -p saxdir/features -i Coffee_TEST -o saxdir/test_scores
 ```
-Then plot the results with python (Python 3.x + matplotlib):
+Using file saxdir/test_scores, we can now plot the highlighted time series (assumes Python 3.x + matplotlib). The input parameter (1) at the end gives the index of the time series to be plotted. The code below plots the first time series in the test set.
 
 ```
-python visual_timeseries.py Coffee_TEST saxdir/test_scores 1
+python ../../../src/visual_timeseries.py Coffee_TEST saxdir/test_scores 1
 ```
 
 The steps to use the SFA representation are similar. We provide in the src folder the python script that can work with the [Python port of SFA](https://github.com/sharford5/SFA_Python). To combine SFA features and SAX features for classification, simply add both directories to the above command:
