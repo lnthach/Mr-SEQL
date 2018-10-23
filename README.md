@@ -68,7 +68,7 @@ mkdir -p build
 cd build
 mkdir -p Release
 cd Release
-cmake -DCMAKE_BUILD_TYPE=Release ../../
+cmake -DCMAKE_BUILD_TYPE=Release ../../src/
 make
 cd bin
 ```
