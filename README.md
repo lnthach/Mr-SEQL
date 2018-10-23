@@ -83,7 +83,7 @@ cp ../../../data/Coffee/Coffee_* .
 mkdir saxdir
 ```
 
-Prepare the SAX representations for Coffee_TRAIN and output results in "saxdir/sax.train". Parameter configurations are saved in "saxdir/config":
+Prepare the SAX representations for Coffee_TRAIN and output results in "saxdir/sax.train". Parameter configurations are saved in "saxdir/config". In the config file, on each row is the description of a fixed SAX representation, e.g., for a line "0 16 16 4" the first number (0) is the index of the representation, the second number (16) is the window length, the third number (16) is the word length and the fourth number (4) is the alphabet size.
 
 ```
 ./sax_convert -i Coffee_TRAIN -o saxdir/sax.train > saxdir/config
