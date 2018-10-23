@@ -114,13 +114,13 @@ Below we give the code and steps for plotting the SAX features learned with logi
 Using file saxdir/test_scores, we can now plot the highlighted time series (assumes Python 3.x + matplotlib). The input parameter (1) at the end gives the index of the time series to be plotted. The code below plots the first time series in the test set.
 
 ```
-python ../../../src/visual_timeseries.py Coffee_TEST saxdir/test_scores 1
+python ../../../src/python/visual_timeseries.py Coffee_TEST saxdir/test_scores 1
 ```
 
 The steps to use the SFA representation are similar. We provide in the src folder the python script that can work with the [Python port of SFA](https://github.com/sharford5/SFA_Python). To combine SFA features and SAX features for classification, simply add both directories to the above command:
 
 ```
-python mf_logreg.py saxdir sfadir
+python ../../../src/python/mf_logreg.py saxdir sfadir
 ```
 
 ## References
