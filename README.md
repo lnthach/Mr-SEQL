@@ -1,9 +1,9 @@
 
-# Time Series Classification with SEQL and multiple symbolic representations (SAX or SFA)
+# Time Series Classification with SEQL and multiple symbolic representations (SAX, SFA)
 
 ## Description
 
-Mr-SEQL is a time series classification software which utilizes linear models and multiple symbolic representations of time series to deliver an accurate and interpretable time series classifier.
+Mr-SEQL is a time series classification software which utilizes linear models (logistic regression) and multiple symbolic representations of time series (SAX, SFA) to deliver an accurate and interpretable time series classifier.
 
 
 
@@ -13,7 +13,7 @@ Mr-SEQL is a time series classification software which utilizes linear models an
 <img src="figs/sax_demo.png" width="680" height="350" />
 </p>
 
-SAX is a transformation method to convert a numeric vector to a symbolic representation, i.e., a sequence of symbols from a predefined alphabet *a*. SAX first computes the Piecewise Aggregate Approximation (PAA) of a time series in the time domain and then transforms this approximation to a symbolic representation.
+SAX is a transformation method to convert a numeric vector to a symbolic representation, i.e., a sequence of symbols from a predefined alphabet *a*. SAX first computes the Piecewise Aggregate Approximation (PAA) of a time series in the time domain,  then transforms this approximation to a symbolic representation.
 
 PAA reduces a time series of length L to a vector of length *l* (*l* < *L* is also the length of the symbolic sequence) by dividing the time series into equal segments. Each segment is then replaced with its mean value.
 
@@ -28,7 +28,7 @@ More information on SFA can be found here: https://github.com/patrickzib/SFA
 
 ## SEQL
 
-SEQL is a symbolic sequence learning algorithm (e.g., it can take as input sequences "abcd aabc ...") that efficiently traverses a large feature space (all variable-length subesequences in the training data are used as features) and selects the most discriminative subsequences for a linear model, based on a  training dataset.
+SEQL is a symbolic sequence learning algorithm (e.g., it can take as input sequences "abcd aabc ...") that efficiently traverses a large feature space and selects the most discriminative subsequences for a linear model, based on a  training dataset.
 
 The original SEQL software and its description can be found here: https://github.com/heerme/seql-sequence-learner
 
@@ -52,7 +52,7 @@ SEQL can be combined with symbolic representations of multiple resolutions and m
 
 ## Interpretation
 
-As our classifier is linear, the model itself is interpretable. Furthermore, we can visualize the SAX features selected by SEQL in the raw time series domain.
+As our time series classifier is linear, the model itself is interpretable. Furthermore, we can visualize the SAX features selected by SEQL by mapping them back to the raw time series domain.
 
 <p align="center">
 <img src="figs/coffee_interpret.png" width="700" height="350" />
