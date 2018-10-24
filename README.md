@@ -127,15 +127,12 @@ python ../../../src/python/mf_logreg.py saxdir sfadir
 
 Our papers:
 
-Our recent work describing the use of sequence learning models (SEQL) and multiple symbolic representations (SAX, SFA) to produce accurate and interpretable time series classifiers:
+> Our recent work describing the use of sequence learning models (SEQL) and multiple symbolic representations (SAX, SFA) to produce accurate and interpretable time series classifiers:
+> T. L. Nguyen, S. Gsponer, I. Ilie, and G. Ifrim, [Interpretable Time Series Classification using All-Subsequence Learning and Symbolic Representations in Time and Frequency Domains](https://arxiv.org/abs/1808.04022). Available: https://arxiv.org/abs/1808.04022
 
-T. L. Nguyen, S. Gsponer, I. Ilie, and G. Ifrim, [Interpretable Time Series Classification using All-Subsequence Learning and Symbolic Representations in Time and Frequency Domains](https://arxiv.org/abs/1808.04022). Available: https://arxiv.org/abs/1808.04022
 
-
-Our prior work on adapting sequence learning for working with symbolic representation of time series (one fixed SAX representation and variable-length SAX words):
-
-T. L. Nguyen, S. Gsponer, and G. Ifrim, "[Time Series Classification by Sequence Learning in All-Subsequence Space](https://ieeexplore.ieee.org/document/7930038/)" in
-2017 IEEE 33rd International Conference on Data Engineering (ICDE), April 2017, pp. 947–958.
+> Our prior work on adapting sequence learning for working with symbolic representation of time series (one fixed SAX representation and variable-length SAX words):
+> T. L. Nguyen, S. Gsponer, and G. Ifrim, "[Time Series Classification by Sequence Learning in All-Subsequence Space](https://ieeexplore.ieee.org/document/7930038/)" in 2017 IEEE 33rd International Conference on Data Engineering (ICDE), April 2017, pp. 947–958.
 
 
 Other SEQL-based projects:
@@ -146,7 +143,7 @@ https://github.com/lnthach/SAX-SEQL
 
 https://github.com/svgsponer/SqLoss
 
-Read more about SAX and other time series techniques [here](http://www.cs.ucr.edu/~eamonn/). The site also hosts the popular UCR Time Series Classification Archive.
+Read more about SAX and other time series techniques [here](http://www.cs.ucr.edu/~eamonn/). The site also hosts the popular [UCR Time Series Classification Archive](https://www.cs.ucr.edu/~eamonn/time_series_data_2018/).
 
 [SFA implementation by the author](https://github.com/patrickzib/SFA).
 
@@ -156,7 +153,7 @@ Read more about SAX and other time series techniques [here](http://www.cs.ucr.ed
 
 This work was funded by Science Foundation Ireland (SFI) under grant number 12/RC/2289 ([Insight Centre](https://www.insight-centre.org)).
 
-We want to thank the many researchers that made available datasets and open source code for time series classification. In particular, we want to thank Eamonn Keogh and his team for preparing the [UCR Time Series Classification Archive](https://www.cs.ucr.edu/~eamonn/time_series_data/), and Tony Bagnall and his team for preparing the [UEA Time Series Classification Benchmark](http://timeseriesclassification.com).
+We want to thank the many researchers that made available datasets and open source code for time series classification. In particular, we want to thank Eamonn Keogh and his team for preparing the [UCR Time Series Classification Archive](https://www.cs.ucr.edu/~eamonn/time_series_data_2018/), and Tony Bagnall and his team for preparing the [UEA Time Series Classification Benchmark](http://timeseriesclassification.com).
 
 Many thanks also go to [Martin](https://www.researchgate.net/profile/Martin_Oreilly4) for his contribution to the case study on the Jump data.
 
