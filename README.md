@@ -127,8 +127,12 @@ python ../../../src/python/mf_logreg.py saxdir sfadir
 
 Our papers:
 
+Our recent work describing the use of sequence learning models (SEQL) and multiple symbolic representations (SAX, SFA) to produce accurate and interpretable time series classifiers:
+
 [Interpretable Time Series Classification using All-Subsequence Learning and Symbolic Representations in Time and Frequency Domains](https://arxiv.org/abs/1808.04022)
 
+
+Our prior work on adapting sequence learning for working with symbolic representation of time series (one fixed SAX representation and variable-length SAX words):
 [Time Series Classification by Sequence Learning in All-Subsequence Space](https://ieeexplore.ieee.org/document/7930038/)
 
 
