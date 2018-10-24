@@ -155,7 +155,7 @@ Read more about SAX and other time series techniques [here](http://www.cs.ucr.ed
 
 This work was funded by Science Foundation Ireland (SFI) under grant number 12/RC/2289 ([Insight Centre](https://www.insight-centre.org)).
 
-We want to thank the many researchers that made available datasets and open source code for time series classification. In particular, we want to thank Eamonn Keogh and his team for preparing the [UCR Time Series Classification Archive] (https://www.cs.ucr.edu/~eamonn/time_series_data/), and Tony Bagnall and his team for preparing the [UEA Time Series Classification Benchmark](http://timeseriesclassification.com).
+We want to thank the many researchers that made available datasets and open source code for time series classification. In particular, we want to thank Eamonn Keogh and his team for preparing the [UCR Time Series Classification Archive](https://www.cs.ucr.edu/~eamonn/time_series_data/), and Tony Bagnall and his team for preparing the [UEA Time Series Classification Benchmark](http://timeseriesclassification.com).
 
 Many thanks also go to [Martin](https://www.researchgate.net/profile/Martin_Oreilly4) for his contribution to the case study on the Jump data.
 
