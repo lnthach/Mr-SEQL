@@ -133,6 +133,7 @@ Our recent work describing the use of sequence learning models (SEQL) and multip
 
 
 Our prior work on adapting sequence learning for working with symbolic representation of time series (one fixed SAX representation and variable-length SAX words):
+
 [Time Series Classification by Sequence Learning in All-Subsequence Space](https://ieeexplore.ieee.org/document/7930038/)
 
 
