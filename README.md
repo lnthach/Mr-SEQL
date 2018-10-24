@@ -129,12 +129,13 @@ Our papers:
 
 Our recent work describing the use of sequence learning models (SEQL) and multiple symbolic representations (SAX, SFA) to produce accurate and interpretable time series classifiers:
 
-[Interpretable Time Series Classification using All-Subsequence Learning and Symbolic Representations in Time and Frequency Domains](https://arxiv.org/abs/1808.04022)
+T. L. Nguyen, S. Gsponer, I. Ilie, and G. Ifrim, [Interpretable Time Series Classification using All-Subsequence Learning and Symbolic Representations in Time and Frequency Domains](https://arxiv.org/abs/1808.04022). Available: https://arxiv.org/abs/1808.04022
 
 
 Our prior work on adapting sequence learning for working with symbolic representation of time series (one fixed SAX representation and variable-length SAX words):
 
-[Time Series Classification by Sequence Learning in All-Subsequence Space](https://ieeexplore.ieee.org/document/7930038/)
+T. L. Nguyen, S. Gsponer, and G. Ifrim, "[Time Series Classification by Sequence Learning in All-Subsequence Space](https://ieeexplore.ieee.org/document/7930038/)" in
+2017 IEEE 33rd International Conference on Data Engineering (ICDE), April 2017, pp. 947–958.
 
 
 Other SEQL-based projects:
@@ -161,11 +162,11 @@ Many thanks also go to [Martin](https://www.researchgate.net/profile/Martin_Orei
 
 Disclaimer
 ----------
-These software distributions are open source, licensed under the GNU General Public License (v3 or later). 
-Note that this is the full GPL, which allows many free uses, but does not allow its incorporation 
-(even in part or in translation) into any type of proprietary software which you distribute. 
+These software distributions are open source, licensed under the GNU General Public License (v3 or later).
+Note that this is the full GPL, which allows many free uses, but does not allow its incorporation
+(even in part or in translation) into any type of proprietary software which you distribute.
 Commercial licensing is also available; please contact us if you are interested.
- 
+
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
