@@ -55,7 +55,7 @@ SEQL can be combined with symbolic representations of multiple resolutions and m
 As the resulting time series classifier is linear, the model itself is interpretable. We can visualize the SAX features selected by SEQL by mapping them back to the raw time series domain.
 
 <p align="center">
-<img src="figs/coffee_interpret.png" width="700" height="350" />
+<img src="figs/plot_ts_highlights-coffee-positive-highlights-1.png" width="500" height="250" />
 </p>
 
 ## Installation
