@@ -504,52 +504,7 @@ public:
 
 	}
 
-	/*
-	void compute_equidepth_break_points(char* timeseries, char* delimiter){
-		char *stre = timeseries + strlen (timeseries);
-		char *dele = delimiter + strlen (delimiter);
-		int size = 1;
-		double swap;
-		std::vector<double> numeric_ts;
-		while (size < MAX) {
-			//std::cout << atof(timeseries) << std::endl;
-			char *n = std::find_first_of (timeseries, stre, delimiter, dele);
-			//std::cout << atof(timeseries) << std::endl;
-			numeric_ts.push_back(atof(timeseries));
-			++size;
-			if (n == stre) break;
-			timeseries = n + 1;
-		}
-		// ??
-		if (window_size < 0){
-			window_size = numeric_ts.size();
-		}
 
-		break_points = (double*)malloc (sizeof(double)*(alphabet_size-1));
-
-		for (int i = 0; i < (numeric_ts.size() - 1); i++){
-			for (int j = 0; j < numeric_ts.size() - i - 1; j++){
-				if (numeric_ts[j] > numeric_ts[j+1]){
-					swap = numeric_ts[j];
-					numeric_ts[j] = numeric_ts[j + 1];
-					numeric_ts[j+1] = swap;
-				}
-			}
-		}
-		//for (int i = 0; i < numeric_ts.size(); i++){
-		//	std::cout << numeric_ts[i] << " ";
-		//}
-		std::cout << std::endl;
-		double step = numeric_ts.size()*1.0/alphabet_size;
-		double pos = step;
-		int a = 0;
-		while (pos < numeric_ts.size()-1){
-			break_points[a] = (numeric_ts[int(pos)] + numeric_ts[int(pos) + 1])/2;
-			a++;
-			pos += step;
-		}
-	}
-	 */
 	void compute_break_points(){
 		break_points = (double*)malloc (sizeof(double)*(alphabet_size-1));
 
@@ -619,22 +574,6 @@ public:
 			break;}
 		case 16:{
 			double bps[15] = { -1.53412054435, -1.15034938038, -0.887146559019, -0.674489750196, -0.488776411115, -0.318639363964, -0.15731068461, 0.0, 0.15731068461, 0.318639363964, 0.488776411115, 0.674489750196, 0.887146559019, 1.15034938038, 1.53412054435 };
-			std::copy(bps,bps + alphabet_size - 1, break_points);
-			break;}
-		case 17:{
-			double bps[16] = {-1.56, -1.19, -0.93, -0.72, -0.54, -0.38, -0.22, -0.07, 0.07, 0.22, 0.38, 0.54, 0.72, 0.93, 1.19, 1.56};
-			std::copy(bps,bps + alphabet_size - 1, break_points);
-			break;}
-		case 18:{
-			double bps[17] = {-1.59, -1.22, -0.97, -0.76, -0.59, -0.43, -0.28, -0.14, 0.0, 0.14, 0.28, 0.43, 0.59, 0.76, 0.97, 1.22, 1.59};
-			std::copy(bps,bps + alphabet_size - 1, break_points);
-			break;}
-		case 19:{
-			double bps[18] = {-1.62, -1.25, -1.0, -0.8, -0.63, -0.48, -0.34, -0.2, -0.07, 0.07, 0.2, 0.34, 0.48, 0.63, 0.8, 1.0, 1.25, 1.62};
-			std::copy(bps,bps + alphabet_size - 1, break_points);
-			break;}
-		case 20:{
-			double bps[19] = {-1.64, -1.28, -1.04, -0.84, -0.67, -0.52, -0.39, -0.25, -0.13, 0.0, 0.13, 0.25, 0.39, 0.52, 0.67, 0.84, 1.04, 1.28, 1.64};
 			std::copy(bps,bps + alphabet_size - 1, break_points);
 			break;}
 		default:
@@ -955,20 +894,6 @@ public:
 
 	std::string timeseries2SAX(std::string timeseries, std::string delimiter){
 		std::string return_sax_str = "";
-		//				std::vector<double> numeric_ts;
-		//				size_t pos = 0;
-		//				std::string token;
-		//
-		//				while ((pos = timeseries.find(delimiter)) != std::string::npos) {
-		//				    token = timeseries.substr(0, pos);
-		//				    //std::cout << token << " ";
-		//				    numeric_ts.push_back(atof(token.c_str()));
-		//				    timeseries.erase(0, pos + delimiter.length());
-		//				}
-		//				if (!timeseries.empty()){
-		//					numeric_ts.push_back(atof(timeseries.c_str()));
-		//				}
-
 		std::vector<std::string> sax = timeseries2vectorSAX(timeseries, delimiter);
 		//				std::vector<std::string> sax = timeseries2SAX(numeric_ts);
 
@@ -1007,7 +932,7 @@ public:
 		//accu_score.resize(timeseries.size());
 		//std::fill(accu_score.begin(), accu_score.end(), 0.0);
 
-		double break_points[4] = { -0.674489750196, 0.0, 0.674489750196 };
+		double break_points[3] = { -0.674489750196, 0.0, 0.674489750196 };
 
 
 		char alphabet[26] = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};;
@@ -1129,7 +1054,7 @@ public:
 		//accu_score.resize(timeseries.size());
 		//std::fill(accu_score.begin(), accu_score.end(), 0.0);
 
-		double break_points[4] = { -0.674489750196, 0.0, 0.674489750196 };
+		double break_points[3] = { -0.674489750196, 0.0, 0.674489750196 };
 
 
 		char alphabet[26] = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};;
@@ -1254,7 +1179,7 @@ public:
 		//accu_score.resize(timeseries.size());
 		//std::fill(accu_score.begin(), accu_score.end(), 0.0);
 
-		double break_points[4] = { -0.674489750196, 0.0, 0.674489750196 };
+		double break_points[3] = { -0.674489750196, 0.0, 0.674489750196 };
 
 
 		char alphabet[26] = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};;
@@ -1394,4 +1319,3 @@ public:
 
 
 #endif /* SAX_CONVERTER_H_ */
-

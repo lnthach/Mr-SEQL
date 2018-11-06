@@ -17,7 +17,8 @@ from sklearn.linear_model import LogisticRegression
 # classification with logistic regression
 def sklearn_logreg(train_x, train_y, test_x, test_y):
 
-	logreg = LogisticRegression().fit(train_x, train_y)
+	#logreg = LogisticRegression().fit(train_x, train_y)
+	logreg = LogisticRegression(solver='newton-cg',multi_class = 'multinomial', class_weight='balanced').fit(train_x, train_y)
 	predicted = logreg.predict(test_x)
 	print("Error rate with logreg: %10.8f" % (1.0 - metrics.accuracy_score(test_y, predicted)))
 	#print("Confusion matrix:")
@@ -37,14 +38,14 @@ def top_k_logreg_features(k, train_x, train_y):
 	#print(','.join(map(str,coef[sort_index[-k:][::-1]])))
 
 # read data from input
-def train_and_test_from_sources():
+def train_and_test_from_sources(argvs):
 	# source paths
 	trainx_sources = []
 	testx_sources = []
-	trainy_source = sys.argv[1] + "/train.y"
-	testy_source = sys.argv[1] + "/test.y"
-	for i in range(1,len(sys.argv)):
-		path = sys.argv[i]
+	trainy_source = argvs[0] + "/train.y"
+	testy_source = argvs[0] + "/test.y"
+	for i in range(len(argvs)):
+		path = argvs[i]
 		for fn in os.listdir(path):
 			if fn.startswith("train.x"):
 				trainx_sources.append(path+"/" + fn)
@@ -59,11 +60,9 @@ def train_and_test_from_sources():
 	train_x = np.concatenate([pd.read_csv(sc, header=None, delim_whitespace = True) for sc in trainx_sources],axis=1)
 	test_x = np.concatenate([pd.read_csv(sc, header=None, delim_whitespace = True) for sc in testx_sources],axis=1)
 
-	sklearn_logreg(train_x, train_y, test_x, test_y)
-	#top_k_logreg_features(10000, train_x, train_y)
-	#print(trainx_sources)
-	#print(testx_sources)
-	#print(trainy_source)
-	#print(testy_source)
+	return train_x, train_y, test_x, test_y
 
-train_and_test_from_sources()
+
+if __name__ == "__main__":
+	train_x, train_y, test_x, test_y = train_and_test_from_sources()
+	sklearn_logreg(train_x, train_y, test_x, test_y)
