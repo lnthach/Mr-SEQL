@@ -6,30 +6,18 @@
  */
 
 #include "sax_converter.h"
+#include "common.h"
+
 #include <stdlib.h>
 #include <fstream>
 #include <unistd.h>
 #include <cstring>
 #include <algorithm>
 
+
 using namespace std;
 
-vector<double> string_to_numeric_vector(string str,string delimiter){
-	vector<double> numeric_ts;
-	size_t pos = 0;
-	std::string token;
 
-	while ((pos = str.find(delimiter)) != std::string::npos) {
-		token = str.substr(0, pos);
-		//std::cout << token << " ";
-		numeric_ts.push_back(atof(token.c_str()));
-		str.erase(0, pos + delimiter.length());
-	}
-	if (!str.empty()){
-		numeric_ts.push_back(atof(str.c_str()));
-	}
-	return numeric_ts;
-}
 
 bool convert_timeseries_to_multi_sax(string input_data,string output_sax,int min_ws, int max_ws, int wl, int as ){
 
@@ -75,7 +63,7 @@ bool convert_timeseries_to_multi_sax(string input_data,string output_sax,int min
 
 		for (int i = 0; i < y.size(); i++){
 			outfile << config << " " << y[i];
-			vector<double> nmts = string_to_numeric_vector(ts[i],del);
+			vector<double> nmts = string_to_double_vector(ts[i],del);
 			if (ws < nmts.size()){
 				for (string w: sax_converter.timeseries2SAX(nmts)){
 					outfile << " " << w;
@@ -122,7 +110,7 @@ bool convert_timeseries_to_multi_sax(string input_data,string output_sax, int wl
 			y.push_back(line.substr(0, pos).c_str());
 			line.erase(0, pos + del.length());
 			//ts.push_back(line);
-			tss.push_back(string_to_numeric_vector(line,del));
+			tss.push_back(string_to_double_vector(line,del));
 			if (min_length == 0){
 				min_length = tss.back().size();
 			} else {
@@ -191,7 +179,7 @@ bool find_patterns(string ts_file,string pt_file,string output){
 			labels.push_back(line.substr(0, pos).c_str());
 			line.erase(0, pos + ts_del.length());
 			//ts.push_back(line);
-			tss.push_back(string_to_numeric_vector(line,ts_del));
+			tss.push_back(string_to_double_vector(line,ts_del));
 			accu_scores.push_back(vector<double>(tss.back().size(),0.0));
 			//accu_scores.back().resize(tss.back().size());
 			//std::fill(accu_scores.back().begin(), accu_scores.back().end(), 0.0);

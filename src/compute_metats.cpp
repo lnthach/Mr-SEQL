@@ -7,6 +7,8 @@
 
 
 #include "sax_converter.h"
+#include "common.h"
+
 #include <stdlib.h>
 #include <fstream>
 #include <unistd.h>
@@ -14,40 +16,6 @@
 #include <algorithm>
 
 using namespace std;
-
-vector<double> string_to_double_vector(string str,string delimiter){
-	vector<double> numeric_ts;
-	size_t pos = 0;
-	std::string token;
-
-	while ((pos = str.find(delimiter)) != std::string::npos) {
-		token = str.substr(0, pos);
-		//std::cout << token << " ";
-		numeric_ts.push_back(atof(token.c_str()));
-		str.erase(0, pos + delimiter.length());
-	}
-	if (!str.empty()){
-		numeric_ts.push_back(atof(str.c_str()));
-	}
-	return numeric_ts;
-}
-
-vector<int> string_to_int_vector(string str,string delimiter){
-	vector<int> numeric_ts;
-	size_t pos = 0;
-	std::string token;
-
-	while ((pos = str.find(delimiter)) != std::string::npos) {
-		token = str.substr(0, pos);
-		//std::cout << token << " ";
-		numeric_ts.push_back(atoi(token.c_str()));
-		str.erase(0, pos + delimiter.length());
-	}
-	if (!str.empty()){
-		numeric_ts.push_back(atoi(str.c_str()));
-	}
-	return numeric_ts;
-}
 
 
 class RConfig{
@@ -136,9 +104,6 @@ vector<SymbolicFeatures> read_univariate_features(string config_file, string fea
 
 
 bool find_patterns(string ts_file, string pt_file, string cf_file, string output){
-
-
-
 
 	// read data
 

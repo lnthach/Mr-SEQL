@@ -62,15 +62,7 @@ void read_multi_data(string path, vector<vector<string>> &sequences,vector<doubl
 	in.close();
 }
 
-/*
-int test_contain(int argc, char **argv){
-	SEQL seql;
-	cout << "Hello" << endl;
-	cout << seql.contain_pattern("abcasdfdsfsdfwefsfsdaf","dsfs") << endl;
-	cout << seql.contain_pattern("abcasdfdsfsdfwefsfsdaf","a**a**f") << endl;
-	cout << seql.contain_pattern("abcasdfdsfsdfwefsfsdaf","abbsbs") << endl;
-}
- */
+
 void write_matrix_to_files(vector<vector<int>>& mt, vector<double>& lb, string path){
 	std::ofstream file (path);
 
@@ -447,12 +439,6 @@ int main(int argc, char **argv){
 	}
 
 	ensemble_seql(train_data,test_data,output,true);
-
-	//if (multiclass){
-	//	multiclass_ensemble(train_data,test_data,output,true);
-	//} else {
-	//	ensemble_seql(train_data,test_data,output,true);
-	//}
 
 }
 
