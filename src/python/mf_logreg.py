@@ -20,7 +20,7 @@ def sklearn_logreg(train_x, train_y, test_x, test_y):
 	#logreg = LogisticRegression().fit(train_x, train_y)
 	logreg = LogisticRegression(solver='newton-cg',multi_class = 'multinomial', class_weight='balanced').fit(train_x, train_y)
 	predicted = logreg.predict(test_x)
-	print("Error rate with logreg: %10.8f" % (1.0 - metrics.accuracy_score(test_y, predicted)))
+	print("Accuracy with logreg: %10.8f" % metrics.accuracy_score(test_y, predicted))
 	#print("Confusion matrix:")
 	#print(metrics.confusion_matrix(test_y, predicted))
 
@@ -64,5 +64,6 @@ def train_and_test_from_sources(argvs):
 
 
 if __name__ == "__main__":
-	train_x, train_y, test_x, test_y = train_and_test_from_sources()
+	train_x, train_y, test_x, test_y = train_and_test_from_sources(sys.argv[1:])
 	sklearn_logreg(train_x, train_y, test_x, test_y)
+
