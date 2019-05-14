@@ -128,6 +128,10 @@ python ../../../src/python/mf_logreg.py saxdir sfadir
 Our papers:
 
 > Our recent work describing the use of sequence learning models (SEQL) and multiple symbolic representations (SAX, SFA) to produce accurate and interpretable time series classifiers:
+
+>  T. L. Nguyen, S. Gsponer, I. Ilie, M. O'reilly and G. Ifrim [Interpretable Time Series Classification using Linear Models and Multi-resolution Multi-domain Symbolic Representations]
+(https://www.researchgate.net/publication/332875865_Interpretable_Time_Series_Classification_using_Linear_Models_and_Multi-resolution_Multi-domain_Symbolic_Representations) in DMKD19, accepted April 2019, expected in press in May 2019.
+
 > T. L. Nguyen, S. Gsponer, I. Ilie, and G. Ifrim, [Interpretable Time Series Classification using All-Subsequence Learning and Symbolic Representations in Time and Frequency Domains](https://arxiv.org/abs/1808.04022). Available: https://arxiv.org/abs/1808.04022
 
 
