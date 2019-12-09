@@ -6,8 +6,11 @@ Ten participants (3 females, 7 males) were recruited for this case-study. Partic
 In this folder, the data are provided in 4 differnt version:
 
 JumpMV: The raw multivariate data (3 dimensions).
+
 Jump: The univariate data.
+
 JumpCropped: The univariate data after cropping.
+
 JumpResampled: The univariate data after cropping and resampling to equal length.
 
 In addition, the Participant_TRAIN and Participant_TEST files note the participants (from P1 to P10) performed in each set.
