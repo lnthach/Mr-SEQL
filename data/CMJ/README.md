@@ -3,7 +3,7 @@
 
 Ten participants (3 females, 7 males) were recruited for this case-study. Participants were equipped with a Shimmer 3 (Shimmer, Dublin, Ireland) inertial measurement unit (IMU) on their dominant foot. Each participant completed 20 countermovement jumps with acceptable form, 20 jumps with their legs bending during flight and 20 jumps with a stumble upon landing. The resulting 3-class dataset consists of 200 instances of IMU data in the acceptable form class and, due to Bluetooth dropping twice during data collection, 199 instances of IMU data in both the 'legs bending' and 'stumble on landing' classes. The data is further cropped (i.e. trim the uneventful parts of the signals) and resampled to equal length.
 
-In this folder, the data are provided in 4 differnt version:
+In this folder, the data are provided in 4 different versions:
 
 JumpMV: The raw multivariate data (3 dimensions).
 
