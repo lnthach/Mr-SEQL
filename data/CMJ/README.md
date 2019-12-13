@@ -14,6 +14,7 @@ JumpCropped: The univariate data after cropping.
 JumpResampled: The univariate data after cropping and resampling to equal length.
 
 In addition, the Participant_TRAIN and Participant_TEST files note the participants (from P1 to P10) performed in each set.
+This information is useful to make sure that the participants in the training and test data are different, otherwise we risk to overfit the models.
 
 ## The author
 
@@ -21,7 +22,7 @@ The data was collected and contributed to our study by the courtesy of [Martin](
 
 ## Additional instructions
 
-Mr-SEQL has a parameter which is the maximum size of the sliding window. By default it is the length of the time series. However, in the case of variable length data (e.g. Jump and JumpCropped) this parameter must be set by user. The following commands reproduce our experiments on the Jump/JumpCropped data:
+Mr-SEQL has a parameter which is the maximum size of the sliding window. By default it is the length of the time series. However, in the case of variable length data (e.g. Jump and JumpCropped) this parameter must be set by the user. The following commands reproduce our experiments on the Jump/JumpCropped data:
 
 
 ```
