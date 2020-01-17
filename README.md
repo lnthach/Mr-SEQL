@@ -123,7 +123,7 @@ The steps to use the SFA representation are similar. We provide in the src folde
 python ../../../src/python/mf_logreg.py saxdir sfadir
 ```
 
-## Python port
+## Python wrapper
 
 Download the repository: 
 ```
