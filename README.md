@@ -123,6 +123,31 @@ The steps to use the SFA representation are similar. We provide in the src folde
 python ../../../src/python/mf_logreg.py saxdir sfadir
 ```
 
+## Python port
+
+Download the repository: 
+```
+git clone https://github.com/lnthach/sktime.git
+```
+Move into the root directory of the repository: 
+```
+cd sktime
+```
+Switch to feature branch: 
+```
+git checkout mrseql
+```
+Make sure your local version is up-to-date: 
+```
+git pull
+```
+Build package from source using: 
+```
+pip install --editable .
+```
+
+Example can be found [here](https://github.com/lnthach/sktime/blob/mrseql/examples/time_series_classification_with_mrseql.ipynb). 
+
 ## References
 
 Our papers:
